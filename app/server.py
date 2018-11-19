@@ -1,19 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 import os
-import random
+from ML.Machine_Learning_part.malware_cheker import predict_file
 
-UPLOAD_FOLDER = '/home/kirill/Documents/Data Science/MIPT/information_security/data_upload'
+UPLOAD_FOLDER = '/home/kirill/Documents/Data Science/MIPT/information_security/data_upload/'
+MODEL_PATH = '/home/kirill/Documents/Data Science/MIPT/information_security/ML/Machine_Learning_part/best_classifier/'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
 Bootstrap(app)
-
-
-def return_score(file):
-    return random.randint(0, 100)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,8 +19,9 @@ def upload_file():
         file = request.files['file']
         if file:
             filename = file.filename
+
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            score = return_score(filename)
+            score = predict_file(UPLOAD_FOLDER + filename, MODEL_PATH)
             return render_template('index_score.html', filename=filename, score=score)
     return render_template('index.html')
 
