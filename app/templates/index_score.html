@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+
+{%block content%}
+
+<form action="" method=post enctype=multipart/form-data>
+    <div class="col-md-4 col-md-offset-4">
+        <hr>
+            <h3 class="text-info">Проверка файла на вирусы</h3>
+            <p> Наша система проверяет является ли файл врусом, используя машинное обучение.</p>
+
+            <div class="box">
+
+              <form action="#" method="post" class="text-center">
+                <div class="margin-bottom-20">
+                  <img class="thumbnail box-center margin-top-20" alt="No image" src="https://img01-uz.olx.uz/images_olxuz/14749656_1_261x203_ustanovka-antivirusa-kasperskogo-kompyuternoe-obsluzhivanie-tashkent.jpg">
+                </div>
+              </form>
+
+              <div class="row">
+                <div class="col-sm-8">
+                  <span class="control-fileupload">
+                    <label for="file"  class="text-left">Пожаулйста выберете файл на вашем компьютере.</label>
+                    <input type="file" id="file" name="file">
+                  </span>
+                </div>
+                <div class="col-sm-4">
+                  <input type=submit class="btn btn-primary btn-block">
+                    <i class="icon-upload icon-white"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-center">Вероятность того, что файл {{filename}} заражен {{score}}%</h3>
+        <hr>
+    </div>
+</form>
+{%endblock %}
