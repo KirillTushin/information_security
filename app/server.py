@@ -25,7 +25,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             score = predict_file(UPLOAD_FOLDER + filename, MODEL_PATH)
 
-            return render_template('{}.html'.format(score), filename=filename)
+            return render_template('res.html', clas = score[1], text = score[0])
     return render_template('index.html')
 
 
