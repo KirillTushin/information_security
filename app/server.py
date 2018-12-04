@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 import os
-from ML.Machine_Learning_part.malware_cheker import predict_file
+from ml.malware_cheker import predict_file
 
 UPLOAD_FOLDER = '/home/kirill/Documents/Data Science/MIPT/information_security/data_upload/'
-MODEL_PATH = '/home/kirill/Documents/Data Science/MIPT/information_security/app/ML/Machine_Learning_part/best_classifier/'
+MODEL_PATH = '/home/kirill/Documents/Data Science/MIPT/information_security/app/ml/best_classifier/'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
